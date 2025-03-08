@@ -7,34 +7,43 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Reference Include="PresentationCore">
-        <HintPath>..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.13\PresentationCore.dll</HintPath>
-      </Reference>
-      <Reference Include="RevitAPI">
-        <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
-      <Reference Include="RevitAPIUI">
-        <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
-        <Private>False</Private>
-      </Reference>
+        <FrameworkReference Include="Microsoft.WindowsDesktop.App.WPF"/>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <Reference Include="PresentationCore">
+            <HintPath>..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.13\PresentationCore.dll</HintPath>
+        </Reference>
+        <Reference Include="RevitAPI">
+            <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+        <Reference Include="RevitAPIUI">
+            <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+            <Private>False</Private>
+        </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+        <Folder Include="Services\"/>
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <!-- Exibe a configuração do build no console -->
-        <Exec Command="echo Configuration: $(Configuration)" />
+        <Exec Command="echo Configuration: $(Configuration)"/>
 
         <!-- Verifica se o diretório AscentBoost existe, caso contrário, cria-o -->
-        <Exec Command="if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot;" />
+        <Exec Command="if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot;"/>
 
         <!-- Copia o arquivo de destino para o diretório AscentBoost -->
-        <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot;" />
+        <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\&quot;"/>
 
         <!-- Copia arquivos *.addin da pasta Utilities para o diretório Addins -->
-        <Exec Command="copy /Y &quot;$(ProjectDir)Utilities\*.addin&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\&quot;" />
+        <Exec Command="copy /Y &quot;$(ProjectDir)Utilities\*.addin&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\&quot;"/>
 
         <!-- Exibe um aviso se nenhum arquivo .addin foi encontrado na pasta Utilities -->
-        <Exec Command="if not exist &quot;$(ProjectDir)Utilities\*.addin&quot; echo WARNING: Nenhum arquivo .addin foi encontrado no projeto" />
+        <Exec Command="if not exist &quot;$(ProjectDir)Utilities\*.addin&quot; echo WARNING: Nenhum arquivo .addin foi encontrado no projeto"/>
 
         <!-- Verifica se a pasta de ícones existe e contém arquivos antes de criar o diretório de destino e copiar -->
         <Exec Command="if exist &quot;$(ProjectDir)Resources\Icons\*.*&quot; (
@@ -42,10 +51,10 @@
         xcopy /Y /E /I &quot;$(ProjectDir)Resources\Icons&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Ascent\AscentBoost\Resources\Icons&quot;
     ) else (
         echo WARNING: Pasta de ícones não existe ou está vazia no projeto
-    )" />
+    )"/>
 
         <!-- Pausa para facilitar a visualização do resultado -->
-        <Exec Command="pause" />
+        <Exec Command="pause"/>
     </Target>
-    
+
 </Project>

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
-using System.Windows.Media.Imaging;
+using AscentBoostRevitApp.Helpers;
+using AscentBoostRevitApp.Helpers.Attributes;
 using Autodesk.Revit.UI;
 
 namespace AscentBoostRevitApp.App;
@@ -13,37 +14,7 @@ public class AscentBoostApp : IExternalApplication
     {
         application.CreateRibbonTab(TabName);
 
-        // Cria um painel na aba
-        var panel = application.CreateRibbonPanel(TabName, PanelName);
-
-        // Caminho para o assembly
-        var assemblyPath = Assembly.GetExecutingAssembly().Location;
-
-        // Criar o botão para o HelloWorldCommand
-        var buttonData = new PushButtonData(
-            "HelloWorldButton",
-            "Hello World",
-            assemblyPath,
-            "AscentBoostRevitApp.Commands.HelloWorldCommand");
-
-        // Verificar se existe pasta de ícones
-        var iconsFolder = Path.Combine(Path.GetDirectoryName(assemblyPath), "Resources", "Icons");
-
-        var button = panel.AddItem(buttonData) as PushButton;
-        if (button != null)
-        {
-            // Definir tooltip
-            button.ToolTip = "Exibe uma mensagem de Hello World";
-
-            // Adicionar ícone ao botão se existir
-            var iconPath = Path.Combine(iconsFolder, "hello_world.png");
-            if (File.Exists(iconPath))
-            {
-                var iconUri = new Uri(iconPath);
-                var icon = new BitmapImage(iconUri);
-                button.LargeImage = icon;
-            }
-        }
+        CreatePanelWithButtons(application, TabName);
 
         return Result.Succeeded;
     }
@@ -51,5 +22,31 @@ public class AscentBoostApp : IExternalApplication
     public Result OnShutdown(UIControlledApplication application)
     {
         return Result.Succeeded;
+    }
+
+    private void CreatePanelWithButtons(
+        UIControlledApplication application,
+        string tabName)
+    {
+        var buttonRegistry = typeof(ButtonRegistry);
+
+
+        var buttonCategories = CategoryHelper.GetCategoryValues(buttonRegistry);
+        var buttonsFieldInfo = buttonRegistry.GetFields(BindingFlags.Public | BindingFlags.Static);
+
+        foreach (var category in buttonCategories)
+        {
+            var ribbonPanel = application.CreateRibbonPanel(tabName, category);
+            foreach (var buttonFieldInfo in buttonsFieldInfo)
+                if (buttonFieldInfo.GetValue(null) is PushButtonData buttonData)
+                {
+                    var categoryAttribute = buttonFieldInfo.GetCustomAttribute<CategoryAttribute>();
+                    if (categoryAttribute != null && categoryAttribute.Category == category)
+                    {
+                        var pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
+                        pushButton.LargeImage = ImageHelper.LoadIconLocal(pushButton.Name);
+                    }
+                }
+        }
     }
 }
