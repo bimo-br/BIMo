@@ -1,4 +1,4 @@
-# Ascent Revit Plugin Boiler Plate
+# BIMo Revit Plugin Boiler Plate
 Nesse boiler plate todas as fucnionalidades básicas de um plugin do tipo IExternalApplication estão resolvidas:
 - Criação da guia
 - Criação dos painéis
