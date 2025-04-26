@@ -1,14 +1,14 @@
 ﻿using System.Reflection;
-using AscentBoostRevitApp.Helpers;
-using AscentBoostRevitApp.Helpers.Attributes;
 using Autodesk.Revit.UI;
+using BIMo.Helpers;
+using BIMo.Helpers.Attributes;
 
-namespace AscentBoostRevitApp.App;
+namespace BIMo.App;
 
-public class AscentBoostApp : IExternalApplication
+public class BIMoApp : IExternalApplication
 {
-    private static readonly string TabName = "Ascent";
-    private static readonly string PanelName = "Boost";
+    private static readonly string TabName = "BIMo";
+    private static readonly string PanelName = "Info";
 
     public Result OnStartup(UIControlledApplication application)
     {

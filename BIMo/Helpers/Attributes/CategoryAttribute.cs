@@ -1,4 +1,4 @@
-﻿namespace AscentBoostRevitApp.Helpers.Attributes;
+﻿namespace BIMo.Helpers.Attributes;
 
 /// <summary>
 ///     Atributo personalizado usado para categorizar elementos em classes estáticas.

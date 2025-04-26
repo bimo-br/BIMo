@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="ced56e6b-9207-472c-ba9d-bce045925cd4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/BIMo/BIMo.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/codeStyles/codeStyleConfig.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/indexLayout.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/material_theme_project_new.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/prettier.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.AscentBoost/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoost.sln" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo.sln" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/App/AscentBoostApp.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/App/BIMoApp.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/App/ButtonRegistry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/App/ButtonRegistry.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/AscentBoostRevitApp.csproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Commands/HelloWorldCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Commands/HelloWorldCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Helpers/Attributes/CategoryAttribute.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Helpers/Attributes/CategoryAttribute.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Helpers/CategoryHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Helpers/CategoryHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Helpers/ImageHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Helpers/ImageHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Helpers/PathHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Helpers/PathHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Resources/Icons/HelloWorld.png" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Resources/Icons/HelloWorld.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AscentBoostRevitApp/Utilities/AscentBoost.addin" beforeDir="false" afterPath="$PROJECT_DIR$/BIMo/Utilities/BIMo.addin" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "PablloDantas"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/bimo-br/bimo-revit-plugin-boilerplate.git",
+    "accountId": "4d726ef7-e019-4c17-8cba-447ce68f425f"
+  }
+}]]></component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
+  <component name="ProjectId" id="2wHNuv0cATnuPKlwfFWkSzhYazd" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ced56e6b-9207-472c-ba9d-bce045925cd4" name="Changes" comment="" />
+      <created>1745694764474</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1745694764474</updated>
+      <workItem from="1745694765842" duration="804000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.OperationCanceledException" breakIfHandledByOtherCode="false" displayValue="System.OperationCanceledException" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.Tasks.TaskCanceledException" breakIfHandledByOtherCode="false" displayValue="System.Threading.Tasks.TaskCanceledException" />
+          <option name="timeStamp" value="2" />
+        </breakpoint>
+        <breakpoint enabled="true" type="DotNet_Exception_Breakpoints">
+          <properties exception="System.Threading.ThreadAbortException" breakIfHandledByOtherCode="false" displayValue="System.Threading.ThreadAbortException" />
+          <option name="timeStamp" value="3" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>

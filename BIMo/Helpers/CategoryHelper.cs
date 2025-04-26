@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using AscentBoostRevitApp.Helpers.Attributes;
+using BIMo.Helpers.Attributes;
 
-namespace AscentBoostRevitApp.Helpers;
+namespace BIMo.Helpers;
 
 public static class CategoryHelper
 {

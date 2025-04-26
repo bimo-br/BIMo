@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Imaging;
 
-namespace AscentBoostRevitApp.Helpers;
+namespace BIMo.Helpers;
 
 /// <summary>
 ///     Utilitário para carregamento de imagens na aplicação

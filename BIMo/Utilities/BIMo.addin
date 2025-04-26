@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" standalone="no"?>
 <RevitAddIns>
     <AddIn Type="Application">
-        <Name>AscentBoost</Name>
-        <Assembly>Ascent\AscentBoost\AscentBoostRevitApp.dll</Assembly>
-        <AddInId>F81CB5A2-574E-41C2-B161-6638D39DCF75</AddInId>
-        <FullClassName>AscentBoostRevitApp.App.AscentBoostApp</FullClassName>
+        <Name>BIMo</Name>
+        <Assembly>BIMo\BIMo.dll</Assembly>
+        <AddInId>ABF54E1A-0D86-47B2-83C1-F3EC83711E2E</AddInId>
+        <FullClassName>BIMo.App.BIMoApp</FullClassName>
         <VendorId>Ascent Tech Solutions</VendorId>
         <VendorDescription>Pabllo Dantas, https://www.ascent.net.br/</VendorDescription>
     </AddIn>
