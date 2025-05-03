@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
-using BIMo.Helpers.Attributes;
+using Bimo.Helpers.Attributes;
 
-namespace BIMo.Helpers;
+namespace Bimo.Helpers;
 
 public static class CategoryHelper
 {

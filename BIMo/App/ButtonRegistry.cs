@@ -1,8 +1,8 @@
 ﻿using Autodesk.Revit.UI;
-using BIMo.Helpers;
-using BIMo.Helpers.Attributes;
+using Bimo.Helpers;
+using Bimo.Helpers.Attributes;
 
-namespace BIMo.App;
+namespace Bimo.App;
 
 public static class ButtonRegistry
 {
@@ -11,7 +11,7 @@ public static class ButtonRegistry
         "HelloWorld",
         "Hello World!",
         PathHelper.GetCurrentAssemblyPath(),
-        "BIMo.Commands.HelloWorldCommand"
+        "Bimo.Commands.HelloWorldCommand"
     );
 
     [Category("Climatização")]
@@ -19,6 +19,6 @@ public static class ButtonRegistry
         "BtuMonitor",
         "Monitor de BTU",
         PathHelper.GetCurrentAssemblyPath(),
-        "BIMo.Commands.BtuMonitorCommand"
+        "Bimo.Commands.BtuMonitorCommand"
     );
 }

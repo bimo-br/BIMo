@@ -2,9 +2,9 @@
 <RevitAddIns>
     <AddIn Type="Application">
         <Name>BIMo</Name>
-        <Assembly>BIMo\BIMo.dll</Assembly>
-        <AddInId>ABF54E1A-0D86-47B2-83C1-F3EC83711E2E</AddInId>
-        <FullClassName>BIMo.App.BIMoApp</FullClassName>
+        <Assembly>Bimo\Bimo.dll</Assembly>
+        <AddInId>C9F82DD1-DD1E-4A99-AB70-A35F18FFA288</AddInId>
+        <FullClassName>Bimo.App.BimoApp</FullClassName>
         <VendorId>Ascent Tech Solutions</VendorId>
         <VendorDescription>Pabllo Dantas, https://www.ascent.net.br/</VendorDescription>
     </AddIn>

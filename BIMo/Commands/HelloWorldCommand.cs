@@ -2,7 +2,7 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 
-namespace BIMo.Commands;
+namespace Bimo.Commands;
 
 [Transaction(TransactionMode.ReadOnly)]
 public class HelloWorldCommand : IExternalCommand

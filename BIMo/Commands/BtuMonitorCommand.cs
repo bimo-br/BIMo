@@ -1,16 +1,19 @@
 ﻿using Autodesk.Revit.Attributes;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using BIMo.Events;
+using Bimo.Events;
 
-namespace BIMo.Commands;
+namespace Bimo.Commands;
 
-[Transaction(TransactionMode.ReadOnly)]
+[Transaction( TransactionMode.ReadOnly )]
+[Regeneration( RegenerationOption.Manual )]
 public class BtuMonitorCommand : IExternalCommand
 {
     public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
-        if (EvaporatorListener.GetUpdaerStatus() == null)
+        Document doc = commandData.Application.ActiveUIDocument.Document;
+        
+        if (EvaporatorListener.GetUpdaterStatus() == null)
         {
             EvaporatorListener.OnPhaseMonitor(commandData.Application);
         }

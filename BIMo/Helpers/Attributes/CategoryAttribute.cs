@@ -1,4 +1,4 @@
-﻿namespace BIMo.Helpers.Attributes;
+﻿namespace Bimo.Helpers.Attributes;
 
 /// <summary>
 ///     Atributo personalizado usado para categorizar elementos em classes estáticas.

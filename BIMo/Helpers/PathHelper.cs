@@ -1,6 +1,6 @@
 ﻿using System.Reflection;
 
-namespace BIMo.Helpers;
+namespace Bimo.Helpers;
 
 /// <summary>
 ///     Esse helper sever para manipular caminhos e diretórios úteis da aplicação.

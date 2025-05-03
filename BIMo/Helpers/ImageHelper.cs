@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media.Imaging;
 
-namespace BIMo.Helpers;
+namespace Bimo.Helpers;
 
 /// <summary>
 ///     Utilitário para carregamento de imagens na aplicação

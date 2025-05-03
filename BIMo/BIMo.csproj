@@ -4,6 +4,8 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>Bimo</AssemblyName>
+        <RootNamespace>Bimo</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -12,32 +14,25 @@
 
 
     <ItemGroup>
-        <Reference Include="PresentationCore">
-            <HintPath>..\..\..\..\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.13\PresentationCore.dll</HintPath>
-        </Reference>
         <Reference Include="RevitAPI">
-            <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
-            <Private>False</Private>
+          <HintPath>..\..\Program Files\Autodesk\Revit 2025\RevitAPI.dll</HintPath>
+          <Private>False</Private>
         </Reference>
         <Reference Include="RevitAPIUI">
-            <HintPath>..\..\..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
-            <Private>False</Private>
+          <HintPath>..\..\Program Files\Autodesk\Revit 2025\RevitAPIUI.dll</HintPath>
+          <Private>False</Private>
         </Reference>
-    </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="Services\"/>
     </ItemGroup>
 
     <Target Name="PostBuild" AfterTargets="PostBuildEvent">
         <!-- Exibe a configuração do build no console -->
         <Exec Command="echo Configuration: $(Configuration)"/>
 
-        <!-- Verifica se o diretório BIMo existe, caso contrário, cria-o -->
-        <Exec Command="if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\&quot;"/>
+        <!-- Verifica se o diretório Bimo existe, caso contrário, cria-o -->
+        <Exec Command="if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\&quot;"/>
 
-        <!-- Copia o arquivo de destino para o diretório BIMo -->
-        <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\&quot;"/>
+        <!-- Copia o arquivo de destino para o diretório Bimo -->
+        <Exec Command="copy /Y &quot;$(TargetPath)&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\&quot;"/>
 
         <!-- Copia arquivos *.addin da pasta Utilities para o diretório Addins -->
         <Exec Command="copy /Y &quot;$(ProjectDir)Utilities\*.addin&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\&quot;"/>
@@ -47,8 +42,8 @@
 
         <!-- Verifica se a pasta de ícones existe e contém arquivos antes de criar o diretório de destino e copiar -->
         <Exec Command="if exist &quot;$(ProjectDir)Resources\Icons\*.*&quot; (
-        if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\Resources\Icons&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\Resources\Icons&quot;
-        xcopy /Y /E /I &quot;$(ProjectDir)Resources\Icons&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\BIMo\Resources\Icons&quot;
+        if not exist &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\Resources\Icons&quot; mkdir &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\Resources\Icons&quot;
+        xcopy /Y /E /I &quot;$(ProjectDir)Resources\Icons&quot; &quot;$(APPDATA)\Autodesk\Revit\Addins\2025\Bimo\Resources\Icons&quot;
     ) else (
         echo WARNING: Pasta de ícones não existe ou está vazia no projeto
     )"/>

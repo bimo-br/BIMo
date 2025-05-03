@@ -1,11 +1,12 @@
 ﻿using System.Reflection;
+using Autodesk.Revit.Attributes;
 using Autodesk.Revit.UI;
-using BIMo.Helpers;
-using BIMo.Helpers.Attributes;
+using Bimo.Helpers;
+using Bimo.Helpers.Attributes;
 
-namespace BIMo.App;
+namespace Bimo.App;
 
-public class BIMoApp : IExternalApplication
+public class BimoApp : IExternalApplication
 {
     private static readonly string TabName = "BIMo";
     
@@ -43,7 +44,7 @@ public class BIMoApp : IExternalApplication
                     if (categoryAttribute != null && categoryAttribute.Category == category)
                     {
                         var pushButton = ribbonPanel.AddItem(buttonData) as PushButton;
-                        pushButton.LargeImage = ImageHelper.LoadIconLocal(pushButton.Name);
+                        pushButton!.LargeImage = ImageHelper.LoadIconLocal(pushButton.Name);
                     }
                 }
         }
