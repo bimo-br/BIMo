@@ -8,8 +8,7 @@ namespace BIMo.App;
 public class BIMoApp : IExternalApplication
 {
     private static readonly string TabName = "BIMo";
-    private static readonly string PanelName = "Info";
-
+    
     public Result OnStartup(UIControlledApplication application)
     {
         application.CreateRibbonTab(TabName);
