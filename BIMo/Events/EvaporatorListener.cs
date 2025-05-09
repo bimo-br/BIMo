@@ -7,11 +7,9 @@ namespace Bimo.Events
 {
     class EvaporatorListener : IUpdater
     {
-        static AddInId _appId;
-        static UpdaterId _updaterId;
-        static EvaporatorListener _updater = null;
-        public List<Double> BtuList => new List<Double>();
-        public List<Element> ElementsConnected => new List<Element>();
+        static AddInId? _appId;
+        static UpdaterId? _updaterId;
+        static EvaporatorListener? _updater = null;
 
         public EvaporatorListener(AddInId id)
         {
@@ -21,97 +19,90 @@ namespace Bimo.Events
 
         public void Execute(UpdaterData data)
         {
-            Document doc = data.GetDocument();
-            
-            var elements = data.GetModifiedElementIds()
-                .Select(id => doc.GetElement(id));
+            Autodesk.Revit.DB.Document doc = data.GetDocument();
 
-            var btuList = elements
-                .Select(e => doc.GetElement(e.GetTypeId()))
-                .Select(elementType => elementType.LookupParameter("BTU/H").AsDouble());
- 
-
-            var connectedElements = elements
-                .Select(element => DuctService.GetAllConnectedElements(element.Id, doc))
+            var evaporators = data.GetModifiedElementIds()
+                .Select(id => doc.GetElement(id))
+                .Where(e => e is FamilyInstance instance && e.Category.BuiltInCategory == BuiltInCategory.OST_MechanicalEquipment && IsEvaporator(instance))
                 .ToList();
 
-            foreach (var btu in btuList)
+            foreach (var evaporator in evaporators)
             {
-                foreach (var connectedElementList in connectedElements)
-                    foreach (var connectedElement in connectedElementList)
-                        if (connectedElement is Element element)
-                        {
-                            var param = element.LookupParameter("BTU/H");
-                                if (param != null)
-                                    param.Set(btu);
-                        }
+
+                Parameter evaporatorParameter = GetBtuParameter(evaporator, doc);
+                var connectedElements = DuctService.GetAllConnectedElements(evaporator.Id, doc);
+
+                foreach (var connectedElement in connectedElements)
+                {
+                    if (connectedElement == null) continue;
+
+                    Parameter btuParam = connectedElement!.LookupParameter("BTU/H");
+                    btuParam.Set(evaporatorParameter.AsDouble());
+                }
             }
         }
-
-        public UpdaterId GetUpdaterId()
+        private static bool IsEvaporator(FamilyInstance element)
         {
-            return _updaterId;
+            if (element.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString().Contains("Evaporadora"))
+            {
+                return true;
+            }
+            return false;
         }
 
-        public ChangePriority GetChangePriority()
+        private static Parameter GetBtuParameter(Element element, Document doc)
         {
-            return ChangePriority.MEPSystems; // Prioridade para sistemas MEP
+
+            var elementType = doc.GetElement(element.GetTypeId());
+            return elementType.LookupParameter("BTU/H");
         }
 
-        public string GetUpdaterName()
-        {
-            return "EvaporatorPhaseMonitor";
-        }
 
-        public string GetAdditionalInformation()
-        {
-            return "Monitora alterações na tipologia ou quantidade de BTU/h das evaporadoras.";
-        }
-
-        public static void OnPhaseMonitor(UIApplication uiapp)
+        public static void OnStartMonitor(UIApplication uiapp)
         {
             Application app = uiapp.Application;
 
-            if (_updater == null)
-            {
-                _updater = new EvaporatorListener(app.ActiveAddInId);
-            }
+            if (_updater == null) _updater = new EvaporatorListener(app.ActiveAddInId);
 
-            
+            Document doc = uiapp.ActiveUIDocument.Document;
             if (!UpdaterRegistry.IsUpdaterRegistered(_updater.GetUpdaterId()))
             {
-                UpdaterRegistry.RegisterUpdater(_updater);
-                
-                // TODO: melhorar o filtro para monitorar somente as evaporadoras.
-                // Define gatilhos para monitorar mudanças em circuitos elétricos
+                UpdaterRegistry.RegisterUpdater(_updater, doc);
+
                 ElementCategoryFilter mechanicalCategoryFilter = new ElementCategoryFilter(
                     BuiltInCategory.OST_MechanicalEquipment
                 );
 
                 UpdaterRegistry.AddTrigger(
                     _updater.GetUpdaterId(),
+                    doc,
                     mechanicalCategoryFilter,
                     Element.GetChangeTypeAny()
                 );
-                
-                TaskDialog.Show("Monitor de Eventos", "o monitor foi ativado.");
+
+                TaskDialog.Show("Monitor de Eventos", "O monitor foi ativado.");
             }
         }
 
-        public static void ShutOffPhaseMonitor()
+        public static void ShutOffMonitor()
         {
             if (_updater != null && UpdaterRegistry.IsUpdaterRegistered(_updater.GetUpdaterId()))
             {
-                UpdaterRegistry.UnregisterUpdater(_updater.GetUpdaterId());
+                UpdaterRegistry.UnregisterUpdater(_updaterId);
                 _updater = null;
             }
-            
-            TaskDialog.Show("Monitor de Eventos", "o monitor foi desativado.");
+
+            TaskDialog.Show("Monitor de Eventos", "O monitor foi desativado.");
         }
-        
-        public static EvaporatorListener? GetUpdaterStatus()
-        {
-            return _updater;
-        }
+
+        public UpdaterId GetUpdaterId() => _updaterId!;
+
+        public ChangePriority GetChangePriority() => ChangePriority.MEPSystems;
+
+        public string GetUpdaterName() => "EvaporatorMonitor";
+
+        public string GetAdditionalInformation() => "Monitora alterações na tipologia ou quantidade de BTU/h das evaporadoras.";
+
+        public static EvaporatorListener? GetUpdaterStatus() => _updater;
     }
 }
