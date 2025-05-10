@@ -5,23 +5,22 @@ using Bimo.Events;
 
 namespace Bimo.Commands;
 
-[Transaction( TransactionMode.ReadOnly )]
-[Regeneration( RegenerationOption.Manual )]
+[Transaction(TransactionMode.ReadOnly)]
+[Regeneration(RegenerationOption.Manual)]
 public class BtuMonitorCommand : IExternalCommand
 {
     public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
     {
-        Document doc = commandData.Application.ActiveUIDocument.Document;
-        
+
         if (EvaporatorListener.GetUpdaterStatus() == null)
         {
-            EvaporatorListener.OnPhaseMonitor(commandData.Application);
+            EvaporatorListener.OnStartMonitor(commandData.Application);
         }
         else
         {
-            EvaporatorListener.ShutOffPhaseMonitor();
+            EvaporatorListener.ShutOffMonitor();
         }
-        
+
         return Result.Succeeded;
     }
 }
