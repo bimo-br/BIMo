@@ -23,7 +23,9 @@ namespace Bimo.Events
 
             var evaporators = data.GetModifiedElementIds()
                 .Select(id => doc.GetElement(id))
-                .Where(e => e is FamilyInstance instance && e.Category.BuiltInCategory == BuiltInCategory.OST_MechanicalEquipment && IsEvaporator(instance))
+                .Where(e => 
+                    e is FamilyInstance instance && e.Category.BuiltInCategory 
+                    == BuiltInCategory.OST_MechanicalEquipment && IsEvaporator(instance))
                 .ToList();
 
             foreach (var evaporator in evaporators)
@@ -34,16 +36,16 @@ namespace Bimo.Events
 
                 foreach (var connectedElement in connectedElements)
                 {
-                    if (connectedElement == null) continue;
-
-                    Parameter btuParam = connectedElement!.LookupParameter("BTU/H");
+                    if (connectedElement == null || connectedElement.Id == evaporator.Id) continue;
+                    
+                    Parameter btuParam = connectedElement.LookupParameter("BTU/H");
                     btuParam.Set(evaporatorParameter.AsDouble());
                 }
             }
         }
         private static bool IsEvaporator(FamilyInstance element)
         {
-            if (element.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString().Contains("Evaporadora"))
+            if (element.get_Parameter(BuiltInParameter.ELEM_FAMILY_PARAM).AsValueString().ToUpper().Contains("EVAPORADORA"))
             {
                 return true;
             }
